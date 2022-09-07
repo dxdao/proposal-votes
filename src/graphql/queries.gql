@@ -1,0 +1,20 @@
+query getProposalVotesSearchFromProposal($proposalId: ID!) {
+  proposal(id: $proposalId) {
+    id
+    title
+    votes(orderBy: createdAt, orderDirection: asc) {
+      ...VoteFields
+    }
+    __typename
+  }
+}
+
+fragment VoteFields on ProposalVote {
+  id
+  createdAt
+  voter
+  outcome
+  reputation
+  __typename
+}
+
